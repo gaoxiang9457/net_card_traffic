@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <!-- 设置控制台日志输出格式 -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+
+    <!-- 设置记录ERROR日志的文件 -->
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </layout>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/tmp/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <root>
+        <appender-ref ref="consoleLog"/>
+        <appender-ref ref="fileInfoLog"/>
+    </root>
+</configuration>
